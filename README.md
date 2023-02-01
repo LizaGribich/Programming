@@ -39,7 +39,7 @@
 Базовые классы и симулятор сражения находятся в jar-архиве (обновлен 9.10.2018, исправлен баг с добавлением атак и кодировкой). Документация в формате javadoc - здесь.
 
 Информацию о покемонах, цепочках эволюции и атаках можно найти на сайтах http://poke-universe.ru, http://pokemondb.net, http://veekun.com/dex/pokemon
-https://sun9-13.userapi.com/impg/lKzHzHcXvV4rONIJpdCkXzigIZ4GLSrJL1mLHQ/uNnh1zkVBUo.jpg?size=1391x459&quality=96&sign=e026e64c68eaabbfd5424824202e02c9&type=album
+![]https://sun9-13.userapi.com/impg/lKzHzHcXvV4rONIJpdCkXzigIZ4GLSrJL1mLHQ/uNnh1zkVBUo.jpg?size=1391x459&quality=96&sign=e026e64c68eaabbfd5424824202e02c9&type=album
 
 # Лабораторная работа #3
 Описание предметной области, по которой должна быть построена объектная модель:
