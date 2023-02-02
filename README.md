@@ -1,4 +1,4 @@
-# Programming
+# Programming-ITMO
 # [Лабораторная работа #1](https://github.com/LizaGribich/Programming/tree/main/Calculations(lab1))
 Написать программу на языке Java, выполняющую соответствующие варианту действия. Программа должна соответствовать следующим требованиям:
 
