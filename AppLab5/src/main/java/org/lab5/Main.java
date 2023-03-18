@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException, ParseException {
@@ -15,7 +16,10 @@ public class Main {
 
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        Vehicle[] vs = objectMapper.readValue(new File("C:\\Users\\liza6\\IdeaProjects\\AppLab5\\src\\data.json"), Vehicle[].class);
+
+        Scanner sc = new Scanner(System.in);
+        File file = new File(sc.nextLine());
+        Vehicle[] vs = objectMapper.readValue(file, Vehicle[].class);
 
         for (int i = 0; i < vs.length; i++) {
             vehicleCollection.put(vs[i].getId(), vs[i]);
