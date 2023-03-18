@@ -1,0 +1,26 @@
+{
+  "3" : {
+    "id" : 3,
+    "name" : "SuperCar",
+    "creationDate" : "2012-10-02 02:00 AM UTC",
+    "enginePower" : 10.0,
+    "capacity" : 4.0,
+    "type" : "CAR"
+  },
+  "5" : {
+    "id" : 5,
+    "name" : "SuperCar",
+    "creationDate" : "2015-10-01 02:00 AM UTC",
+    "enginePower" : 3.0,
+    "capacity" : 8.0,
+    "type" : "CAR"
+  },
+  "6" : {
+    "id" : 6,
+    "name" : "SuperCar",
+    "creationDate" : "2016-10-01 02:00 AM UTC",
+    "enginePower" : 8.0,
+    "capacity" : 4.999,
+    "type" : "CAR"
+  }
+}
