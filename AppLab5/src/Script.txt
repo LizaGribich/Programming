@@ -1,4 +1,0 @@
-show
-history
-history
-exit
