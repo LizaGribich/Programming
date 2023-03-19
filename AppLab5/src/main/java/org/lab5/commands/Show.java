@@ -8,12 +8,16 @@ import java.util.HashMap;
 
 public class Show implements Comandable {
     static String name = "show";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public Show (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
     public static String getName() {
         return name;
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... id) {
+    public void execute(Object... id) {
         Sorter sorter = new Sorter();
         sorter.sortByEnginePower(hashMap);
     }

@@ -11,6 +11,10 @@ import java.util.HashMap;
 
 public class Help implements Comandable {
     static String name = "help";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public Help (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     public static String getName() {
         return name;
@@ -23,10 +27,10 @@ public class Help implements Comandable {
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         System.out.println("Доступные команды:");
 
-        CommandManager commandManager = new CommandManager();
+        CommandManager commandManager = new CommandManager(hashMap);
         commandManager.makeCollectionOfCommands();
 
         for (String key : commandManager.getCommands().keySet()) {

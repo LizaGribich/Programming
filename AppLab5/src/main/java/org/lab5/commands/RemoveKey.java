@@ -11,13 +11,17 @@ import java.util.HashMap;
 public class RemoveKey implements Comandable {
 
     static String name = "remove_key";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public RemoveKey (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     public static String getName() {
         return name;
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         int id = Integer.valueOf(Arrays.toString(o).replaceAll("]", "").substring(1));
         if (hashMap.get(id) != null) {
             hashMap.remove(id);

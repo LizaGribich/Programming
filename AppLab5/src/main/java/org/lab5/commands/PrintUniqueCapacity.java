@@ -11,10 +11,14 @@ import java.util.TreeSet;
 
 public class PrintUniqueCapacity implements Comandable {
     static String name = "print_unique_capacity";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public PrintUniqueCapacity (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         HashMap<Integer, Float> CapacityList = new HashMap<>();
         for (int key : hashMap.keySet()) {
             CapacityList.put(key, hashMap.get(key).getCapacity());

@@ -11,9 +11,13 @@ import java.util.Scanner;
 
 public class ReplaceIfGreater implements Comandable {
     static String name = "replace_if_greater";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public ReplaceIfGreater (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         int id = Integer.valueOf(Arrays.toString(o).replaceAll("]", "").substring(1));
         if (hashMap.get(id) != null) {
             Scanner scanner = new Scanner(System.in);

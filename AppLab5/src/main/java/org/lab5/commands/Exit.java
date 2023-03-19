@@ -13,11 +13,10 @@ public class Exit implements Comandable {
         return name;
     }
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... id) {
+    public void execute(Object... id) {
         InteractiveMode.InteractiveModeOff();
     }
     @Override
-
     public String getDescr() {
         return "Завершает выполнение программы.\n" +
                 "Синтаксис: exit";

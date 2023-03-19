@@ -3,7 +3,6 @@ package org.lab5;
 import org.lab5.models.Vehicle;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashMap;
@@ -13,7 +12,7 @@ public class InteractiveMode {
     static boolean mode = true;
     static Deque<String> deque = new ArrayDeque<>();
 
-    public static void interactiveModeOn(HashMap<String, Comandable> commands, HashMap<Integer, Vehicle> models) throws ParseException, IOException {
+    public static void interactiveModeOn(HashMap<String, Comandable> commands, HashMap<Integer, Vehicle> models) throws IOException {
         Scanner sc = new Scanner(System.in);
         while (mode) {
             System.out.println("Введите команду:");
@@ -34,14 +33,14 @@ public class InteractiveMode {
         return deque;
     }
 
-    public static void runCommand(HashMap<String, Comandable> commands, HashMap<Integer, Vehicle> models, String[] arrayOfInput) throws ParseException, IOException {
+    public static void runCommand(HashMap<String, Comandable> commands, HashMap<Integer, Vehicle> models, String[] arrayOfInput) throws IOException{
         try {
             if (arrayOfInput.length > 1) {
                 try {
                     int id = Integer.parseInt(arrayOfInput[1]);
-                    commands.get(arrayOfInput[0]).execute(models, id);
+                    commands.get(arrayOfInput[0]).execute(id);
                 } catch (NumberFormatException e) {
-                    commands.get(arrayOfInput[0]).execute(models, arrayOfInput[1]);
+                    commands.get(arrayOfInput[0]).execute(arrayOfInput[1]);
                 }
             } else {
                 commands.get(arrayOfInput[0]).execute(models);

@@ -15,9 +15,14 @@ import java.util.HashMap;
 
 public class ExecuteScript implements Comandable {
     static String name = "execute_script";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+
+    public ExecuteScript(HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) {
+    public void execute(Object... o) {
 
         String f = Arrays.toString(o).replaceAll("]", "").substring(1);
 
@@ -25,7 +30,7 @@ public class ExecuteScript implements Comandable {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] ArrayOfInput = line.split(" ");
-                CommandManager commandManager = new CommandManager();
+                CommandManager commandManager = new CommandManager(hashMap);
                 commandManager.makeCollectionOfCommands();
                 commandManager.removeExecuteScript();
                 InteractiveMode.runCommand(commandManager.getCommands(), hashMap, ArrayOfInput);
@@ -33,8 +38,6 @@ public class ExecuteScript implements Comandable {
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден.");
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

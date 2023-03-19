@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class CreationModel {
-    public static void createModel(HashMap<Integer, Vehicle> hashMap, Integer id) throws ParseException {
+    public Vehicle createModel(HashMap<Integer, Vehicle> hashMap, Integer id){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите name:");
         String name = scanner.nextLine();
@@ -31,8 +31,8 @@ public class CreationModel {
         System.out.println("Введите fuelType (GASOLINE, MANPOWER, PLASMA, ANTIMATTER):");
         String fuelTypeString = scanner.next();
 
-        hashMap.put(id, new Vehicle(id, name, new Coordinates(x, y), creationDate, enginePower, capacity,
-                VehicleType.valueOf(typeString), FuelType.valueOf(fuelTypeString)));
+        return new Vehicle(id, name, new Coordinates(x, y), creationDate, enginePower, capacity,
+                VehicleType.valueOf(typeString), FuelType.valueOf(fuelTypeString));
 
     }
 }

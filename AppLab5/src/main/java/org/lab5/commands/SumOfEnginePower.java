@@ -9,13 +9,17 @@ import java.util.HashMap;
 
 public class SumOfEnginePower implements Comandable {
     static String name = "sum_of_engine_power";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public SumOfEnginePower (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     public static String getName() {
         return name;
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         Double summa = 0.0;
         for (Vehicle value : hashMap.values()) {
             summa += value.getEnginePower();

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.lab5.models.Vehicle;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.HashMap;
@@ -18,14 +19,22 @@ public class Main {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
         Scanner sc = new Scanner(System.in);
-        File file = new File(sc.nextLine());
-        Vehicle[] vs = objectMapper.readValue(file, Vehicle[].class);
+        while (true) {
+            System.out.println("Введите название файла:");
+            try {
+                File file = new File(sc.nextLine());
+                Vehicle[] vs = objectMapper.readValue(file, Vehicle[].class);
+                for (int i = 0; i < vs.length; i++) {
+                    vehicleCollection.put(vs[i].getId(), vs[i]);
+                }
+                break;
 
-        for (int i = 0; i < vs.length; i++) {
-            vehicleCollection.put(vs[i].getId(), vs[i]);
+            } catch (FileNotFoundException e) {
+                System.out.println("Файл не найден.");
+            }
         }
 
-        CommandManager commandManager = new CommandManager();
+        CommandManager commandManager = new CommandManager(vehicleCollection);
         commandManager.makeCollectionOfCommands();
 
         InteractiveMode.interactiveModeOn(commandManager.getCommands(), vehicleCollection);

@@ -12,13 +12,17 @@ import java.util.List;
 
 public class RemoveLowerKey implements Comandable {
     static String name = "remove_lower_key";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public RemoveLowerKey (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     public static String getName() {
         return name;
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o){
         List<Integer> keysForRemoving = new ArrayList<Integer>();
         int id = Integer.valueOf(Arrays.toString(o).replaceAll("]", "").substring(1));
         for (int key : hashMap.keySet()) {

@@ -13,7 +13,7 @@ public class History implements Comandable {
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... id) {
+    public void execute(Object... id) {
         InteractiveMode.getDeque();
         System.out.println(InteractiveMode.getDeque());
     }

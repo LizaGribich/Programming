@@ -13,7 +13,10 @@ import java.util.HashMap;
 
 public class Save implements Comandable {
     static String name = "save";
-
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public Save (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     public static String getName() {
         return name;
@@ -26,7 +29,7 @@ public class Save implements Comandable {
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
         writer.writeValue(new File("C:\\Users\\liza6\\IdeaProjects\\AppLab5\\src\\output.json"), hashMap);

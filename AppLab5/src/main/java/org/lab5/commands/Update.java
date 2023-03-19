@@ -12,6 +12,10 @@ import java.util.HashMap;
 
 public class Update implements Comandable {
     static String name = "update";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public Update (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
 
     public static String getName() {
@@ -25,10 +29,11 @@ public class Update implements Comandable {
     }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException {
+    public void execute(Object... o) {
         int id = Integer.parseInt(o[0].toString());
         if (hashMap.get(id) != null){
-            CreationModel.createModel(hashMap, id);
+            CreationModel creationModel = new CreationModel();
+            hashMap.put(id, creationModel.createModel(hashMap, id));
 
             System.out.println("Модель с id = " + id + " успешно заменена!");
         } else {

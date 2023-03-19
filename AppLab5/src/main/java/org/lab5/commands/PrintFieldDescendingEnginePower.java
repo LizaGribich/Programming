@@ -11,6 +11,10 @@ import java.util.Map;
 
 public class PrintFieldDescendingEnginePower implements Comandable {
     static String name = "print_field_descending_engine_power";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public PrintFieldDescendingEnginePower (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     public static String getName() {
         return name;
@@ -18,7 +22,7 @@ public class PrintFieldDescendingEnginePower implements Comandable {
 
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         HashMap<Integer, Double> UnsortedList = new HashMap<>();
         for (int key : hashMap.keySet()) {
             UnsortedList.put(key, hashMap.get(key).getEnginePower());

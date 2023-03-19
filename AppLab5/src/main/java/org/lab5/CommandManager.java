@@ -1,30 +1,35 @@
 package org.lab5;
 
 import org.lab5.commands.*;
+import org.lab5.models.Vehicle;
 
 import java.util.HashMap;
 
 public class CommandManager {
-    private HashMap<String, Comandable> commandsMap = new HashMap<>();;
+    private HashMap<String, Comandable> commandsMap = new HashMap<>();
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public CommandManager (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
 
     public void makeCollectionOfCommands() {
-        commandsMap.put(Clear.getName(), new Clear());
-        commandsMap.put(RemoveKey.getName(), new RemoveKey());
-        commandsMap.put(Show.getName(), new Show());
-        commandsMap.put(Help.getName(), new Help());
-        commandsMap.put(RemoveLowerKey.getName(), new RemoveLowerKey());
-        commandsMap.put(SumOfEnginePower.getName(), new SumOfEnginePower());
-        commandsMap.put(PrintFieldDescendingEnginePower.getName(), new PrintFieldDescendingEnginePower());
+        commandsMap.put(Clear.getName(), new Clear(hashMap));
+        commandsMap.put(RemoveKey.getName(), new RemoveKey(hashMap));
+        commandsMap.put(Show.getName(), new Show(hashMap));
+        commandsMap.put(Help.getName(), new Help(hashMap));
+        commandsMap.put(RemoveLowerKey.getName(), new RemoveLowerKey(hashMap));
+        commandsMap.put(SumOfEnginePower.getName(), new SumOfEnginePower(hashMap));
+        commandsMap.put(PrintFieldDescendingEnginePower.getName(), new PrintFieldDescendingEnginePower(hashMap));
         commandsMap.put(Exit.getName(), new Exit());
-        commandsMap.put(Update.getName(), new Update());
-        commandsMap.put(Insert.getName(), new Insert());
-        commandsMap.put(PrintUniqueCapacity.getName(), new PrintUniqueCapacity());
-        commandsMap.put(ReplaceIfGreater.getName(), new ReplaceIfGreater());
+        commandsMap.put(Update.getName(), new Update(hashMap));
+        commandsMap.put(Insert.getName(), new Insert(hashMap));
+        commandsMap.put(PrintUniqueCapacity.getName(), new PrintUniqueCapacity(hashMap));
+        commandsMap.put(ReplaceIfGreater.getName(), new ReplaceIfGreater(hashMap));
         commandsMap.put(History.getName(), new History());
-        commandsMap.put(Info.getName(), new Info());
-        commandsMap.put(Save.getName(), new Save());
-        commandsMap.put(ExecuteScript.getName(), new ExecuteScript());
+        commandsMap.put(Info.getName(), new Info(hashMap));
+        commandsMap.put(Save.getName(), new Save(hashMap));
+        commandsMap.put(ExecuteScript.getName(), new ExecuteScript(hashMap));
     }
 
     public void removeExecuteScript() {

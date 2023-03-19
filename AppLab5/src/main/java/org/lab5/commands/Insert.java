@@ -13,9 +13,13 @@ import java.util.List;
 
 public class Insert implements Comandable {
     static String name = "insert";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public Insert (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         List<Integer> a = new ArrayList<>();
         for (Integer key : hashMap.keySet()) {
             a.add(hashMap.get(key).getId());
@@ -25,9 +29,9 @@ public class Insert implements Comandable {
         int randomInt = randomNum.createRundomNum(a);
 
         CreationModel creationModel = new CreationModel();
-        creationModel.createModel(hashMap, randomInt);
+        hashMap.put(randomInt, creationModel.createModel(hashMap, randomInt));
 
-        System.out.println("Модель с id = " + randomNum + " успешно добавлена!");
+        System.out.println("Модель с id = " + randomInt + " успешно добавлена!");
     }
 
     @Override

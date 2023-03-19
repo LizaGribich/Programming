@@ -9,9 +9,13 @@ import java.util.HashMap;
 
 public class Info implements Comandable {
     static String name = "info";
+    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    public Info (HashMap<Integer, Vehicle> hashMap) {
+        this.hashMap = hashMap;
+    }
 
     @Override
-    public void execute(HashMap<Integer, Vehicle> hashMap, Object... o) throws ParseException, IOException {
+    public void execute(Object... o) {
         System.out.println("Тип коллеции: " + hashMap.getClass());
         System.out.println("Колличество элементов: " + hashMap.size());
     }
