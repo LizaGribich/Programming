@@ -1,14 +1,14 @@
 package org.lab5.commands;
 
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
 import org.lab5.Comandable;
 
-import java.util.HashMap;
-
 public class Clear implements Comandable {
     static String name = "clear";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public Clear (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public Clear (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -17,9 +17,9 @@ public class Clear implements Comandable {
     }
 
     @Override
-    public void execute( Object... id) {
+    public CommandResult execute(Object... id) {
         hashMap.clear();
-        System.out.println("Коллекция очищена.");
+        return new CommandResult("Коллекция очищена.", true);
     }
 
     @Override

@@ -7,13 +7,13 @@ import java.util.HashMap;
 
 public class CommandManager {
     private HashMap<String, Comandable> commandsMap = new HashMap<>();
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public CommandManager (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap = new MapWrapper<>(HashMap.class);
+    public CommandManager (MapWrapper<Integer, Vehicle> hashMap) throws Exception {
         this.hashMap = hashMap;
     }
 
 
-    public void makeCollectionOfCommands() {
+    public void makeCollectionOfCommands() throws Exception {
         commandsMap.put(Clear.getName(), new Clear(hashMap));
         commandsMap.put(RemoveKey.getName(), new RemoveKey(hashMap));
         commandsMap.put(Show.getName(), new Show(hashMap));

@@ -1,10 +1,11 @@
 package org.lab5.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.lab5.IDable;
 
 import java.util.Date;
 
-public class Vehicle implements Comparable<Vehicle>{
+public class Vehicle implements Comparable<Vehicle>, IDable {
     private int id;
     private String name;
     private Coordinates coordinates;
@@ -57,7 +58,7 @@ public class Vehicle implements Comparable<Vehicle>{
 
     @Override
     public String toString() {
-        return " Name: " + this.getName() + "; Vehical type: " + this.getType() + "; Engine power: " + this.getEnginePower() + "; Capacity: " + this.getCapacity();
+        return " Name: " + this.getName() + "; Vehicle type: " + this.getType() + "; Engine power: " + this.getEnginePower() + "; Capacity: " + this.getCapacity();
     }
 
     @Override
@@ -69,5 +70,10 @@ public class Vehicle implements Comparable<Vehicle>{
         } else {
             return -1;
         }
+    }
+
+    @Override
+    public int detId() {
+        return id;
     }
 }

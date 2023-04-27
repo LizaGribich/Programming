@@ -12,17 +12,17 @@ public class InteractiveMode {
     static boolean mode = true;
     static Deque<String> deque = new ArrayDeque<>();
 
-    public static void interactiveModeOn(HashMap<String, Comandable> commands, HashMap<Integer, Vehicle> models) throws IOException {
+    public static void interactiveModeOn(HashMap<String, Comandable> commands, MapWrapper<Integer, Vehicle> models) throws IOException {
         Scanner sc = new Scanner(System.in);
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         while (mode) {
-            System.out.println("Введите команду:");
+            consolePrinter.printToConsole("Введите команду:");
             String input = sc.nextLine();
-            System.out.println("Спасибо! Вы ввели команду " + input);
+            consolePrinter.printToConsole("Спасибо! Вы ввели команду " + input);
             String[] ArrayOfInput = input.split(" ");
             runCommand(commands, models, ArrayOfInput);
         }
         sc.close();
-        System.out.println("Программа завершена!");
     }
 
     public static void InteractiveModeOff() {
@@ -33,17 +33,18 @@ public class InteractiveMode {
         return deque;
     }
 
-    public static void runCommand(HashMap<String, Comandable> commands, HashMap<Integer, Vehicle> models, String[] arrayOfInput) throws IOException{
+    public static void runCommand(HashMap<String, Comandable> commands, MapWrapper<Integer, Vehicle> models, String[] arrayOfInput) throws IOException{
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         try {
             if (arrayOfInput.length > 1) {
                 try {
                     int id = Integer.parseInt(arrayOfInput[1]);
-                    commands.get(arrayOfInput[0]).execute(id);
+                    consolePrinter.printResToConsole(commands.get(arrayOfInput[0]).execute(id));
                 } catch (NumberFormatException e) {
-                    commands.get(arrayOfInput[0]).execute(arrayOfInput[1]);
+                    consolePrinter.printResToConsole(commands.get(arrayOfInput[0]).execute(arrayOfInput[1]));
                 }
             } else {
-                commands.get(arrayOfInput[0]).execute(models);
+                consolePrinter.printResToConsole(commands.get(arrayOfInput[0]).execute(models));
             }
             if (deque.size() > 12) {
                 deque.pollFirst();
@@ -51,10 +52,11 @@ public class InteractiveMode {
             } else {
                 deque.add(arrayOfInput[0]);
             }
-        } catch (NullPointerException e) {
-            System.out.println(arrayOfInput[0]);
-            System.out.println("Неправильно введена команда.\n" +
+        } catch (Exception e) {
+            consolePrinter.printToConsole(arrayOfInput[0]);
+            consolePrinter.printToConsole("Неправильно введена команда.\n" +
                     "Для справки по доступным командам введите help.");
+            consolePrinter.printToConsole(e.getMessage());
         }
     }
 }

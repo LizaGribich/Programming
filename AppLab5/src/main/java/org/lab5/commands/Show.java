@@ -1,15 +1,16 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.Sorter;
 import org.lab5.models.Vehicle;
 
-import java.util.HashMap;
 
 public class Show implements Comandable {
     static String name = "show";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public Show (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public Show (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
     public static String getName() {
@@ -17,9 +18,10 @@ public class Show implements Comandable {
     }
 
     @Override
-    public void execute(Object... id) {
+    public CommandResult execute(Object... id) {
         Sorter sorter = new Sorter();
         sorter.sortByEnginePower(hashMap);
+        return new CommandResult("Коллекция успешно выведена.", true);
     }
 
     @Override

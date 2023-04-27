@@ -1,10 +1,9 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
 import org.lab5.InteractiveMode;
-import org.lab5.models.Vehicle;
 
-import java.util.HashMap;
 
 public class Exit implements Comandable {
     static String name = "exit";
@@ -13,8 +12,9 @@ public class Exit implements Comandable {
         return name;
     }
     @Override
-    public void execute(Object... id) {
+    public CommandResult execute(Object... id) {
         InteractiveMode.InteractiveModeOff();
+        return new CommandResult("Программа завершена!", true);
     }
     @Override
     public String getDescr() {

@@ -1,18 +1,17 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Arrays;
-import java.util.HashMap;
 
 public class RemoveKey implements Comandable {
 
     static String name = "remove_key";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public RemoveKey (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public RemoveKey (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -21,14 +20,16 @@ public class RemoveKey implements Comandable {
     }
 
     @Override
-    public void execute(Object... o) {
+    public CommandResult execute(Object... o) {
         int id = Integer.valueOf(Arrays.toString(o).replaceAll("]", "").substring(1));
+        CommandResult commandResult;
         if (hashMap.get(id) != null) {
             hashMap.remove(id);
-            System.out.println("Из коллекции удалён элемент с id = " + id + ".");
+            commandResult = new CommandResult("Из коллекции удалён элемент с id = " + id + ".", true);
         } else {
-            System.out.println("Модель с id = " + id + " не существует!");
+            commandResult = new CommandResult("Модель с id = " + id + " не существует!", false);
         }
+        return commandResult;
 
     }
 

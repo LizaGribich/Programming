@@ -1,37 +1,32 @@
 package org.lab5.commands;
 
-import org.lab5.CreationModel;
-import org.lab5.Comandable;
-import org.lab5.RandomNum;
+import org.lab5.*;
 import org.lab5.models.Vehicle;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class Insert implements Comandable {
     static String name = "insert";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public Insert (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public Insert (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
     @Override
-    public void execute(Object... o) {
+    public CommandResult execute(Object... o) {
         List<Integer> a = new ArrayList<>();
         for (Integer key : hashMap.keySet()) {
             a.add(hashMap.get(key).getId());
         }
 
         RandomNum randomNum = new RandomNum();
-        int randomInt = randomNum.createRundomNum(a);
+        int randomInt = randomNum.createRandomNum(hashMap);
 
         CreationModel creationModel = new CreationModel();
-        hashMap.put(randomInt, creationModel.createModel(hashMap, randomInt));
+        hashMap.put(randomInt, creationModel.createModel(randomInt));
 
-        System.out.println("Модель с id = " + randomInt + " успешно добавлена!");
+        return new CommandResult("Модель с id = " + randomInt + " успешно добавлена!", true);
     }
 
     @Override

@@ -1,14 +1,20 @@
 package org.lab5;
 
+import org.lab5.models.Vehicle;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomNum {
-    public int createRundomNum(List<Integer> a) {
-        int randomNum = ThreadLocalRandom.current().nextInt(1, 999 + 1);
-        while (a.contains(randomNum)) {
-            randomNum = ThreadLocalRandom.current().nextInt(1, 999 + 1);
+    public int createRandomNum(MapWrapper<Integer, Vehicle> hashMap) {
+        List<Integer> a = new ArrayList<>();
+        for (Integer key : hashMap.keySet()) {
+            a.add(hashMap.get(key).getId());
         }
+
+        int randomNum = ThreadLocalRandom.current().nextInt(Collections.max(a), Collections.max(a)+100);
         return randomNum;
     }
 }

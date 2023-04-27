@@ -1,20 +1,18 @@
 package org.lab5.commands;
 
+import org.lab5.CollectionManager;
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import org.lab5.Comandable;
 
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.HashMap;
 
 public class Save implements Comandable {
     static String name = "save";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public Save (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public Save (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -29,10 +27,9 @@ public class Save implements Comandable {
     }
 
     @Override
-    public void execute(Object... o) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        ObjectWriter writer = mapper.writer(new DefaultPrettyPrinter());
-        writer.writeValue(new File("C:\\Users\\liza6\\IdeaProjects\\AppLab5\\src\\output.json"), hashMap);
-        System.out.println("Коллекция успешно сохранена!");
+    public CommandResult execute(Object... o) throws IOException {
+        CollectionManager collectionManager = new CollectionManager<>(hashMap);
+        collectionManager.serialize(new File("C:\\Users\\liza6\\IdeaProjects\\AppLab5_\\src\\output.json"));
+        return new CommandResult("Коллекция успешно сохранена!", true);
     }
 }

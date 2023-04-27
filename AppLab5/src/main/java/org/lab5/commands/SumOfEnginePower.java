@@ -1,16 +1,14 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
-
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.HashMap;
 
 public class SumOfEnginePower implements Comandable {
     static String name = "sum_of_engine_power";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public SumOfEnginePower (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public SumOfEnginePower (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -19,12 +17,12 @@ public class SumOfEnginePower implements Comandable {
     }
 
     @Override
-    public void execute(Object... o) {
+    public CommandResult execute(Object... o) {
         Double summa = 0.0;
         for (Vehicle value : hashMap.values()) {
             summa += value.getEnginePower();
         }
-        System.out.println("Сумма значений поля EnginePower для всех элементов коллеции = " + summa);
+        return new CommandResult("Сумма значений поля EnginePower для всех элементов коллеции = " + summa, true);
     }
 
     @Override

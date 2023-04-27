@@ -1,18 +1,20 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class PrintFieldDescendingEnginePower implements Comandable {
     static String name = "print_field_descending_engine_power";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public PrintFieldDescendingEnginePower (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public PrintFieldDescendingEnginePower (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -22,16 +24,22 @@ public class PrintFieldDescendingEnginePower implements Comandable {
 
 
     @Override
-    public void execute(Object... o) {
-        HashMap<Integer, Double> UnsortedList = new HashMap<>();
+    public CommandResult execute(Object... o) {
+        HashMap<Integer, Double> unsortedList = new HashMap<>();
         for (int key : hashMap.keySet()) {
-            UnsortedList.put(key, hashMap.get(key).getEnginePower());
+            unsortedList.put(key, hashMap.get(key).getEnginePower());
         }
 
-        UnsortedList.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEach(System.out::println);
+        Map<Integer, Double> sortedMap = unsortedList.entrySet().stream()
+                .sorted(Comparator.comparingInt(e -> (int) -e.getValue()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (a, b) -> { throw new AssertionError(); },
+                        LinkedHashMap::new
+                ));
+
+        return new CommandResult(sortedMap.entrySet().toString(), true);
     }
 
     @Override

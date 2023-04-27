@@ -1,10 +1,11 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
 import org.lab5.InteractiveMode;
-import org.lab5.models.Vehicle;
 
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.Deque;
 
 public class History implements Comandable {
     static String name = "history";
@@ -13,9 +14,8 @@ public class History implements Comandable {
     }
 
     @Override
-    public void execute(Object... id) {
-        InteractiveMode.getDeque();
-        System.out.println(InteractiveMode.getDeque());
+    public CommandResult execute(Object... id) {
+        return new CommandResult(Arrays.toString(new Deque[]{InteractiveMode.getDeque()}), true);
     }
     @Override
     public String getDescr() {

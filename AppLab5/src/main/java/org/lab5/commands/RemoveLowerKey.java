@@ -1,19 +1,18 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
 
-import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 public class RemoveLowerKey implements Comandable {
     static String name = "remove_lower_key";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public RemoveLowerKey (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public RemoveLowerKey (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -22,8 +21,9 @@ public class RemoveLowerKey implements Comandable {
     }
 
     @Override
-    public void execute(Object... o){
-        List<Integer> keysForRemoving = new ArrayList<Integer>();
+    public CommandResult execute(Object... o){
+        List<Integer> keysForRemoving = new ArrayList<>();
+        String result = "";
         int id = Integer.valueOf(Arrays.toString(o).replaceAll("]", "").substring(1));
         for (int key : hashMap.keySet()) {
             if (key < id) {
@@ -32,8 +32,9 @@ public class RemoveLowerKey implements Comandable {
         }
         for (int key : keysForRemoving) {
             hashMap.remove(key);
-            System.out.println("Из коллекции был удалён эменет с id = " + key);
+            result += "Из коллекции был удалён эменет с id = " + key + "\n";
         }
+        return new CommandResult(result, true);
     }
 
     @Override

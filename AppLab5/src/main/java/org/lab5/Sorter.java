@@ -1,16 +1,16 @@
 package org.lab5;
 
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.lab5.models.Vehicle;
 
 public class Sorter {
-    public void sortByEnginePower(HashMap<Integer, Vehicle> hashMap) {
+    public void sortByEnginePower(MapWrapper<Integer, Vehicle> hashMap) {
+        ConsolePrinter consolePrinter = new ConsolePrinter();
         hashMap.entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEach(System.out::println);
+                .sorted(Map.Entry.<Integer, Vehicle>comparingByValue(Comparator.reverseOrder()))
+                .forEach(entry -> consolePrinter.printToConsole(entry.getKey() + " : " + entry.getValue().toString()));
     }
 }

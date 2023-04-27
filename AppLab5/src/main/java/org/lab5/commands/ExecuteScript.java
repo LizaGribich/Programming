@@ -1,45 +1,52 @@
 package org.lab5.commands;
 
-import org.lab5.CommandManager;
-import org.lab5.Comandable;
-import org.lab5.InteractiveMode;
+import org.lab5.*;
 import org.lab5.models.Vehicle;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.List;
 
 public class ExecuteScript implements Comandable {
     static String name = "execute_script";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
+    private MapWrapper<Integer, Vehicle> hashMap;
+    static List<String> usedFiles = new ArrayList<>();
 
-    public ExecuteScript(HashMap<Integer, Vehicle> hashMap) {
+    public ExecuteScript(MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
     @Override
-    public void execute(Object... o) {
+    public CommandResult execute(Object... o) {
+        CommandResult commandResult = null;
 
         String f = Arrays.toString(o).replaceAll("]", "").substring(1);
+        if (usedFiles.contains(f)) {
+            return new CommandResult("Обнаружена рекурсия.", false);
+        }
+        usedFiles.add(f);
 
         try (BufferedReader reader = new BufferedReader(new FileReader(f))) {
             String line;
+            commandResult = new CommandResult("Завершён скрипт из файла:" + f, true);
             while ((line = reader.readLine()) != null) {
                 String[] ArrayOfInput = line.split(" ");
                 CommandManager commandManager = new CommandManager(hashMap);
                 commandManager.makeCollectionOfCommands();
-                commandManager.removeExecuteScript();
                 InteractiveMode.runCommand(commandManager.getCommands(), hashMap, ArrayOfInput);
             }
         } catch (FileNotFoundException e) {
-            System.out.println("Файл не найден.");
+            commandResult = new CommandResult("Файл не найден.", false);
         } catch (IOException e) {
-            e.printStackTrace();
+            commandResult = new CommandResult("Ошибка доступа", false);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
+        return commandResult;
     }
 
     @Override

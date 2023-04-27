@@ -1,18 +1,13 @@
 package org.lab5.commands;
 
+import org.lab5.*;
 import org.lab5.models.Vehicle;
-import org.lab5.CommandManager;
-import org.lab5.Comandable;
-
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.HashMap;
 
 
 public class Help implements Comandable {
     static String name = "help";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public Help (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public Help (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -27,15 +22,17 @@ public class Help implements Comandable {
     }
 
     @Override
-    public void execute(Object... o) {
-        System.out.println("Доступные команды:");
+    public CommandResult execute(Object... o) throws Exception {
+        ConsolePrinter consolePrinter = new ConsolePrinter();
+        consolePrinter.printToConsole("Доступные команды:");
 
         CommandManager commandManager = new CommandManager(hashMap);
         commandManager.makeCollectionOfCommands();
+        String descr = "";
 
         for (String key : commandManager.getCommands().keySet()) {
-            System.out.println(commandManager.getCommands().get(key).getDescr());
-            System.out.println();
+            descr += commandManager.getCommands().get(key).getDescr() + "\n\n";
         }
+        return new CommandResult(descr, true);
     }
 }

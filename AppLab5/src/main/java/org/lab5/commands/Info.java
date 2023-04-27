@@ -1,23 +1,21 @@
 package org.lab5.commands;
 
 import org.lab5.Comandable;
+import org.lab5.CommandResult;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
-
-import java.io.IOException;
-import java.text.ParseException;
-import java.util.HashMap;
 
 public class Info implements Comandable {
     static String name = "info";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public Info (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public Info (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
     @Override
-    public void execute(Object... o) {
-        System.out.println("Тип коллеции: " + hashMap.getClass());
-        System.out.println("Колличество элементов: " + hashMap.size());
+    public CommandResult execute(Object... o) {
+        return new CommandResult("Тип коллеции: " + hashMap.getClass() + "\n"
+                + "Колличество элементов: " + hashMap.size()+ "\n", true);
     }
 
     @Override

@@ -1,19 +1,18 @@
 package org.lab5.commands;
 
 
+import org.lab5.CommandResult;
 import org.lab5.CreationModel;
 import org.lab5.Comandable;
+import org.lab5.MapWrapper;
 import org.lab5.models.Vehicle;
-
-
-import java.text.ParseException;
-import java.util.HashMap;
 
 
 public class Update implements Comandable {
     static String name = "update";
-    private HashMap<Integer, Vehicle> hashMap = new HashMap<>();
-    public Update (HashMap<Integer, Vehicle> hashMap) {
+    private MapWrapper<Integer, Vehicle> hashMap;
+
+    public Update(MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -29,16 +28,19 @@ public class Update implements Comandable {
     }
 
     @Override
-    public void execute(Object... o) {
+    public CommandResult execute(Object... o) {
         int id = Integer.parseInt(o[0].toString());
-        if (hashMap.get(id) != null){
+        CommandResult commandResult;
+        if (hashMap.get(id) != null) {
             CreationModel creationModel = new CreationModel();
-            hashMap.put(id, creationModel.createModel(hashMap, id));
+            hashMap.put(id, creationModel.createModel(id));
 
-            System.out.println("Модель с id = " + id + " успешно заменена!");
+            commandResult = new CommandResult("Модель с id = " + id +
+                    " успешно заменена!", true);
         } else {
-            System.out.println("Модель с id = " + id + " не существует!");
+            commandResult = new CommandResult("Модель с id = " + id +
+                    " не существует!", false);
         }
-
+        return commandResult;
     }
 }

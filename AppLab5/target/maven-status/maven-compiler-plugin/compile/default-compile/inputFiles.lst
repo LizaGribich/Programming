@@ -2,9 +2,12 @@ C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\Help.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\History.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\models\Vehicle.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\Exit.java
+C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\CommandResult.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\PrintFieldDescendingEnginePower.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\InteractiveMode.java
+C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\MapWrapper.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\models\Coordinates.java
+C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\CollectionMapper.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\ReplaceIfGreater.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\CommandManager.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\ExecuteScript.java
@@ -20,8 +23,12 @@ C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\Save.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\Info.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\Insert.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\Main.java
+C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\EnterField.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\models\VehicleType.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\PrintUniqueCapacity.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\RemoveLowerKey.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\commands\Update.java
+C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\ConsolePrinter.java
+C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\IDable.java
+C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\CollectionManager.java
 C:\Users\liza6\IdeaProjects\AppLab5\src\main\java\org\lab5\Sorter.java
