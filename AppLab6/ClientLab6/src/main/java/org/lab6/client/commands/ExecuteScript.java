@@ -3,13 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 import org.lab6.client.models.Vehicle;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class ExecuteScript implements Comandable {
     static String name = "execute_script";

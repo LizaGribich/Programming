@@ -41,6 +41,7 @@ public class ExecuteScript implements Comandable, StringArgument {
             String res = InteractiveMode.returnScriptRes();
             commandResult = new CommandResult(res, true);
         } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
             commandResult = new CommandResult("Файл не найден.", false);
         } catch (IOException e) {
             commandResult = new CommandResult("Ошибка доступа", false);

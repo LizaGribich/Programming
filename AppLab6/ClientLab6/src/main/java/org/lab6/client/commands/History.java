@@ -3,8 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 
 
-import java.util.Arrays;
-import java.util.Deque;
 
 public class History implements Comandable {
     static String name = "history";

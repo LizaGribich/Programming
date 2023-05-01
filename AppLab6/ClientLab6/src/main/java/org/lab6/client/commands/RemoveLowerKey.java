@@ -3,10 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 import org.lab6.client.models.Vehicle;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class RemoveLowerKey implements Comandable {
     static String name = "remove_lower_key";
     private MapWrapper<Integer, Vehicle> hashMap;

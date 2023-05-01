@@ -3,8 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 import org.lab6.client.models.Vehicle;
 
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class ReplaceIfGreater implements Comandable {
     static String name = "replace_if_greater";

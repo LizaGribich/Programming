@@ -3,9 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 import org.lab6.client.models.Vehicle;
 
-import java.util.HashMap;
-import java.util.Set;
-import java.util.TreeSet;
 
 public class PrintUniqueCapacity implements Comandable {
     static String name = "print_unique_capacity";

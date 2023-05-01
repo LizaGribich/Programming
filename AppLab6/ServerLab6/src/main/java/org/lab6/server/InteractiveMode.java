@@ -76,7 +76,7 @@ public class InteractiveMode {
                         res = new CommandResult("Неправильно введена команда: неверный тип данных аргумента.", false);
                     }
                 } else {
-                    res = commands.get(request.getCommand()).execute();
+                    res = commands.get(request.getCommand()).execute(request.getArg());
                 }
             } else {
                 res = commands.get(request.getCommand()).execute(models);

@@ -3,8 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 import org.lab6.client.models.Vehicle;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class Insert implements Comandable {
     static String name = "insert";

@@ -3,7 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 import org.lab6.client.models.Vehicle;
 
-import java.util.Arrays;
 
 public class RemoveKey implements Comandable {
 

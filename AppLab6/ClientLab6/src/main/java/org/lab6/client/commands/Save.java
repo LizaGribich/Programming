@@ -3,8 +3,6 @@ package org.lab6.client.commands;
 import org.lab6.client.*;
 import org.lab6.client.models.Vehicle;
 
-import java.io.File;
-import java.io.IOException;
 
 public class Save implements Comandable {
     static String name = "save";
