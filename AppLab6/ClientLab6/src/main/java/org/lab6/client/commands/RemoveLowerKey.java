@@ -18,22 +18,6 @@ public class RemoveLowerKey implements Comandable {
         return name;
     }
 
-    @Override
-    public CommandResult execute(Object... o){
-        List<Integer> keysForRemoving = new ArrayList<>();
-        String result = "";
-        int id = Integer.valueOf(Arrays.toString(o).replaceAll("]", "").substring(1));
-        for (int key : hashMap.keySet()) {
-            if (key < id) {
-                keysForRemoving.add(key);
-            }
-        }
-        for (int key : keysForRemoving) {
-            hashMap.remove(key);
-            result += "Из коллекции был удалён эменет с id = " + key + "\n";
-        }
-        return new CommandResult(result, true);
-    }
 
     @Override
     public String getDescr() {

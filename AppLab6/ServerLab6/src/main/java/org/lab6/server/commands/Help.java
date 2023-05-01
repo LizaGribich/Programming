@@ -23,8 +23,6 @@ public class Help implements Comandable {
 
     @Override
     public CommandResult execute(Object... o) throws Exception {
-        ConsolePrinter consolePrinter = new ConsolePrinter();
-        consolePrinter.printToConsole("Доступные команды:");
 
         CommandManager commandManager = new CommandManager(hashMap);
         commandManager.makeCollectionOfCommands();

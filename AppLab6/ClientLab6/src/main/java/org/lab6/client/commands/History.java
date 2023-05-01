@@ -13,10 +13,6 @@ public class History implements Comandable {
     }
 
     @Override
-    public CommandResult execute(Object... id) {
-        return new CommandResult(Arrays.toString(new Deque[]{InteractiveMode.getDeque()}), true);
-    }
-    @Override
     public String getDescr() {
         return "Выводит последние 13 введённых пользователем команд.\n" +
                 "Синтаксис: history";

@@ -10,13 +10,19 @@ public class ExtraData {
         Scanner scanner = new Scanner(System.in);
         consolePrinter.printToConsole("Введите название поля, которое хотите заменить (enginePower/capacity):");
         String name = scanner.nextLine();
-        Number value = 0;
+        Number value = null;
         if (name.equals("enginePower")) {
             consolePrinter.printToConsole("Введите новое значение поля:");
-            value = scanner.nextDouble();
+            try {
+                value = scanner.nextDouble();
+            } catch (Exception e) {
+            }
         } else if (name.equals("capacity")) {
             consolePrinter.printToConsole("Введите новое значение поля:");
-            value = scanner.nextFloat();
+            try {
+                value = scanner.nextFloat();
+            } catch (Exception e) {
+            }
         }
         this.name = name;
         this.value = value;

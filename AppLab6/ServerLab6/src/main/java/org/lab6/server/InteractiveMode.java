@@ -64,15 +64,30 @@ public class InteractiveMode {
         JavaType javaType = TypeFactory.defaultInstance().constructParametricType(Request.class, Object.class);
         Request request = objectMapper.readValue(sentence, javaType);
         CommandResult res;
-        if (request.getArg() != null) {
-            res = commands.get(request.getCommand()).execute(request.getArg());
+        if (!(commands.get(request.getCommand()) instanceof ExtraData || commands.get(request.getCommand()) instanceof ExtraModel)){
+            if ((request.getArg() == null) && ((commands.get(request.getCommand()) instanceof IntArgument) || (commands.get(request.getCommand()) instanceof StringArgument))) {
+                res = new CommandResult("Неправильно введена команда: нет аргумента.", false);
+            } else if (request.getArg() != null) {
+                if (commands.get(request.getCommand()) instanceof IntArgument) {
+                    try {
+                        Integer.parseInt(request.getArg().toString());
+                        res = commands.get(request.getCommand()).execute(request.getArg());
+                    } catch (NumberFormatException e) {
+                        res = new CommandResult("Неправильно введена команда: неверный тип данных аргумента.", false);
+                    }
+                } else {
+                    res = commands.get(request.getCommand()).execute();
+                }
+            } else {
+                res = commands.get(request.getCommand()).execute(models);
+            }
         } else {
-            res = commands.get(request.getCommand()).execute(models);
+            res = commands.get(request.getCommand()).execute(request.getArg());
         }
+
 
         String string = objectMapper.writeValueAsString(res);
         sendData = string.getBytes();
-
 
         DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
         serverSocket.send(sendPacket);

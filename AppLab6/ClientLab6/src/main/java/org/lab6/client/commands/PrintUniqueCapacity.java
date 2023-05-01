@@ -15,16 +15,6 @@ public class PrintUniqueCapacity implements Comandable {
     }
 
 
-    @Override
-    public CommandResult execute(Object... o) {
-        HashMap<Integer, Float> CapacityList = new HashMap<>();
-        for (int key : hashMap.keySet()) {
-            CapacityList.put(key, hashMap.get(key).getCapacity());
-        }
-
-        Set<Float> capacityValues = new TreeSet<>(CapacityList.values());
-        return new CommandResult(capacityValues.toString(), true);
-    }
 
     @Override
     public String getDescr() {

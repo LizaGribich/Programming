@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RemoveLowerKey implements Comandable {
+public class RemoveLowerKey implements Comandable, IntArgument {
     static String name = "remove_lower_key";
     private MapWrapper<Integer, Vehicle> hashMap;
     public RemoveLowerKey (MapWrapper<Integer, Vehicle> hashMap) {

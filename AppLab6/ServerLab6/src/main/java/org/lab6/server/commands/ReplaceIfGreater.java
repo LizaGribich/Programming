@@ -5,22 +5,31 @@ import org.lab6.server.models.Vehicle;
 
 import java.util.Arrays;
 
-public class ReplaceIfGreater implements Comandable {
+public class ReplaceIfGreater implements Comandable, IntArgument, ExtraData {
     static String name = "replace_if_greater";
     private MapWrapper<Integer, Vehicle> hashMap;
-    public ReplaceIfGreater (MapWrapper<Integer, Vehicle> hashMap) throws Exception {
+    public ReplaceIfGreater (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
 
     public CommandResult execute(Object... o) {
         String inputString = Arrays.toString(o);
-        System.out.println(inputString);
         String[] inputValues = inputString.substring(1, inputString.length() - 1).split(" ");
-
-        int id = Integer.parseInt(inputValues[0]);
+        int id;
+        try {
+            id = Integer.parseInt(inputValues[0]);
+        } catch (NumberFormatException e) {
+            return new CommandResult("Введен неверный тип данных в качетве аргумента.", false);
+        }
         String field = inputValues[1];
-        Number value = Double.parseDouble(inputValues[2]);
+        Number value;
+        try {
+            value = Double.parseDouble(inputValues[2]);
+        } catch (NumberFormatException e) {
+            return new CommandResult("Введен неверный тип данных.", false);
+        }
+
 
 
         CommandResult commandResult;

@@ -22,25 +22,6 @@ public class PrintFieldDescendingEnginePower implements Comandable {
 
 
     @Override
-    public CommandResult execute(Object... o) {
-        HashMap<Integer, Double> unsortedList = new HashMap<>();
-        for (int key : hashMap.keySet()) {
-            unsortedList.put(key, hashMap.get(key).getEnginePower());
-        }
-
-        Map<Integer, Double> sortedMap = unsortedList.entrySet().stream()
-                .sorted(Comparator.comparingInt(e -> (int) -e.getValue()))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue,
-                        (a, b) -> { throw new AssertionError(); },
-                        LinkedHashMap::new
-                ));
-
-        return new CommandResult(sortedMap.entrySet().toString(), true);
-    }
-
-    @Override
     public String getDescr() {
         return "Вывести значения поля enginePower всех элементов в порядке убывания.\n" +
                 "Синтаксис: print_field_descending_engine_power";

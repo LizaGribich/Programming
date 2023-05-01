@@ -23,10 +23,4 @@ public class Save implements Comandable {
                 "Синтаксис: save";
     }
 
-    @Override
-    public CommandResult execute(Object... o) throws IOException {
-        CollectionManager collectionManager = new CollectionManager<>(hashMap);
-        collectionManager.serialize(new File("C:\\Users\\liza6\\IdeaProjects\\AppLab5_\\src\\output.json"));
-        return new CommandResult("Коллекция успешно сохранена!", true);
-    }
 }

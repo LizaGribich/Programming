@@ -14,12 +14,6 @@ public class Show implements Comandable {
         return name;
     }
 
-    @Override
-    public CommandResult execute(Object... id) {
-        Sorter sorter = new Sorter();
-        sorter.sortByEnginePower(hashMap);
-        return new CommandResult("Коллекция успешно выведена.", true);
-    }
 
     @Override
     public String getDescr() {

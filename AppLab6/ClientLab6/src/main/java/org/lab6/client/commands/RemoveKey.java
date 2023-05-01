@@ -17,19 +17,6 @@ public class RemoveKey implements Comandable {
         return name;
     }
 
-    @Override
-    public CommandResult execute(Object... o) {
-        int id = Integer.valueOf(Arrays.toString(o).replaceAll("]", "").substring(1));
-        CommandResult commandResult;
-        if (hashMap.get(id) != null) {
-            hashMap.remove(id);
-            commandResult = new CommandResult("Из коллекции удалён элемент с id = " + id + ".", true);
-        } else {
-            commandResult = new CommandResult("Модель с id = " + id + " не существует!", false);
-        }
-        return commandResult;
-
-    }
 
     @Override
     public String getDescr() {

@@ -14,22 +14,6 @@ public class Insert implements Comandable {
     }
 
     @Override
-    public CommandResult execute(Object... o) {
-        List<Integer> a = new ArrayList<>();
-        for (Integer key : hashMap.keySet()) {
-            a.add(hashMap.get(key).getId());
-        }
-
-        RandomNum randomNum = new RandomNum();
-        int randomInt = randomNum.createRandomNum(hashMap);
-
-        CreationModel creationModel = new CreationModel();
-        hashMap.put(randomInt, creationModel.createModel(randomInt));
-
-        return new CommandResult("Модель с id = " + randomInt + " успешно добавлена!", true);
-    }
-
-    @Override
     public String getDescr() {
         return "Добавить новый элемент с автоматически сгенерированным ключом.\n" +
                 "Синтаксис: insert";

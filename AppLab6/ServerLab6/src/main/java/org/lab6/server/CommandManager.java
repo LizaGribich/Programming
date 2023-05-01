@@ -7,8 +7,8 @@ import java.util.HashMap;
 
 public class CommandManager {
     private HashMap<String, Comandable> commandsMap = new HashMap<>();
-    private MapWrapper<Integer, Vehicle> hashMap = new MapWrapper<>(HashMap.class);
-    public CommandManager (MapWrapper<Integer, Vehicle> hashMap) throws Exception {
+    private MapWrapper<Integer, Vehicle> hashMap;
+    public CommandManager (MapWrapper<Integer, Vehicle> hashMap) {
         this.hashMap = hashMap;
     }
 
@@ -32,10 +32,6 @@ public class CommandManager {
         commandsMap.put(ExecuteScript.getName(), new ExecuteScript(hashMap));
     }
 
-    public void removeExecuteScript() {
-        commandsMap.remove(ExecuteScript.getName());
-        this.commandsMap = commandsMap;
-    }
 
     public HashMap<String, Comandable> getCommands(){
         return commandsMap;

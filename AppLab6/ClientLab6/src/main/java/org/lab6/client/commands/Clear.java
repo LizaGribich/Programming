@@ -14,11 +14,6 @@ public class Clear implements Comandable {
         return name;
     }
 
-    @Override
-    public CommandResult execute(Object... id) {
-        hashMap.clear();
-        return new CommandResult("Коллекция очищена.", true);
-    }
 
     @Override
     public String getDescr() {

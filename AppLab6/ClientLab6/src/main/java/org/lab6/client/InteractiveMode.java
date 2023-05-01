@@ -9,12 +9,12 @@ import java.util.*;
 
 public class InteractiveMode {
     static boolean mode = true;
-    static Deque<String> deque = new ArrayDeque<>();
     static DatagramSocket clientSocket;
 
     static {
         try {
             clientSocket = new DatagramSocket();
+            clientSocket.setSoTimeout(5000);
         } catch (SocketException e) {
             throw new RuntimeException(e);
         }
@@ -30,11 +30,11 @@ public class InteractiveMode {
         }
     }
 
-    public InteractiveMode() throws SocketException, UnknownHostException {
+    public InteractiveMode() {
     }
 
 
-    public static void interactiveModeOn(ArrayList<String> commands) throws IOException {
+    public static void interactiveModeOn(ArrayList<String> commands) {
         Scanner sc = new Scanner(System.in);
         ConsolePrinter consolePrinter = new ConsolePrinter();
 
@@ -54,11 +54,8 @@ public class InteractiveMode {
         clientSocket.close();
     }
 
-    public static Deque<String> getDeque() {
-        return deque;
-    }
 
-    public static void runCommand(ArrayList<String> commands, String[] arrayOfInput) throws IOException {
+    public static void runCommand(ArrayList<String> commands, String[] arrayOfInput) {
         ConsolePrinter consolePrinter = new ConsolePrinter();
         try {
             Request input;
@@ -67,20 +64,6 @@ public class InteractiveMode {
             }
             CommandManager commandManager = new CommandManager();
             commandManager.makeCollectionOfCommands();
-            if (commandManager.getCommandsIntArgument().contains(arrayOfInput[0])) {
-                try {
-                    int id = Integer.parseInt(arrayOfInput[1]);
-                } catch (NumberFormatException e) {
-                    throw new Exception();
-                }
-            }
-            if (commandManager.getCommandsStringArgument().contains(arrayOfInput[0])) {
-                try {
-                    String temp = arrayOfInput[1];
-                } catch (NumberFormatException e) {
-                    throw new Exception();
-                }
-            }
 
             if (arrayOfInput.length > 1) {
                 if (commandManager.getCommandsExtraData().contains(arrayOfInput[0])) {
@@ -97,10 +80,10 @@ public class InteractiveMode {
                 }
                 try {
                     int id = Integer.parseInt(arrayOfInput[1]);
-                    input = new Request<Integer>(arrayOfInput[0], id);
+                    input = new Request<>(arrayOfInput[0], id);
 
                 } catch (NumberFormatException e) {
-                    input = new Request<String>(arrayOfInput[0], arrayOfInput[1]);
+                    input = new Request<>(arrayOfInput[0], arrayOfInput[1]);
                 }
             } else {
                 if (commandManager.getCommandsExtraModel().contains(arrayOfInput[0])) {
@@ -128,11 +111,24 @@ public class InteractiveMode {
 
                 byte[] receiveData = new byte[1048576];
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-                clientSocket.receive(receivePacket);
 
-                String response = new String(receivePacket.getData(), 0, receivePacket.getLength()).trim();
-                CommandResult commandResult = objectMapper.readValue(response, CommandResult.class);
-                consolePrinter.printToConsole("Ответ от сервера: \n" + commandResult.getMessage());
+                while (true){
+                    try {
+                        clientSocket.receive(receivePacket);
+                        String response = new String(receivePacket.getData(), 0, receivePacket.getLength()).trim();
+                        CommandResult commandResult = objectMapper.readValue(response, CommandResult.class);
+                        consolePrinter.printToConsole("Ответ от сервера: \n" + commandResult.getMessage());
+                        break;
+                    } catch (SocketTimeoutException e) {
+                        consolePrinter.printToConsole("Ошибка подключения.");
+                        clientSocket = new DatagramSocket();
+                        clientSocket.setSoTimeout(5000);
+                        clientSocket.send(sendPacket);
+                        receivePacket = new DatagramPacket(receiveData, receiveData.length);
+                    }
+                }
+
+
 
             } else {
                 consolePrinter.printToConsole("Неправильно введена команда.\n" +

@@ -10,11 +10,7 @@ public class Exit implements Comandable {
     public static String getName() {
         return name;
     }
-    @Override
-    public CommandResult execute(Object... id) {
-        InteractiveMode.InteractiveModeOff();
-        return new CommandResult("Программа завершена!", true);
-    }
+
     @Override
     public String getDescr() {
         return "Завершает выполнение программы.\n" +

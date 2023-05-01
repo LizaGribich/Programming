@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ExecuteScript implements Comandable {
+public class ExecuteScript implements Comandable, StringArgument {
     static String name = "execute_script";
     private MapWrapper<Integer, Vehicle> hashMap;
     static List<String> usedFiles = new ArrayList<>();
@@ -22,7 +22,7 @@ public class ExecuteScript implements Comandable {
 
     @Override
     public CommandResult execute(Object... o) throws IOException {
-        CommandResult commandResult;
+        CommandResult commandResult = null;
 
         String f = Arrays.toString(o).replaceAll("]", "").substring(1);
         if (usedFiles.contains(f)) {
@@ -37,17 +37,16 @@ public class ExecuteScript implements Comandable {
                 commandManager.makeCollectionOfCommands();
                 InteractiveMode.runScript(commandManager.getCommands(),hashMap, arrayOfInput);
             }
+            usedFiles.clear();
+            String res = InteractiveMode.returnScriptRes();
+            commandResult = new CommandResult(res, true);
         } catch (FileNotFoundException e) {
             commandResult = new CommandResult("Файл не найден.", false);
         } catch (IOException e) {
             commandResult = new CommandResult("Ошибка доступа", false);
         } catch (Exception e) {
-            commandResult = new CommandResult("jcnsjsc", false);
         }
-        usedFiles.clear();
-        String res = InteractiveMode.returnScriptRes();
-        System.out.println(res);
-        return new CommandResult(res, true);
+        return commandResult;
     }
 
 

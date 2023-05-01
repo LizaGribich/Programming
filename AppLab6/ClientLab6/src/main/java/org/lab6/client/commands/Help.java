@@ -21,8 +21,4 @@ public class Help implements Comandable {
                 "Синтаксис: help";
     }
 
-    @Override
-    public CommandResult execute(Object... o) throws Exception {
-        return new CommandResult("", true);
-    }
 }

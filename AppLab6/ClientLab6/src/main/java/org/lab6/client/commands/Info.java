@@ -10,11 +10,6 @@ public class Info implements Comandable {
         this.hashMap = hashMap;
     }
 
-    @Override
-    public CommandResult execute(Object... o) {
-        return new CommandResult("Тип коллеции: " + hashMap.getClass() + "\n"
-                + "Колличество элементов: " + hashMap.size()+ "\n", true);
-    }
 
     @Override
     public String getDescr() {

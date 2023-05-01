@@ -14,14 +14,6 @@ public class SumOfEnginePower implements Comandable {
         return name;
     }
 
-    @Override
-    public CommandResult execute(Object... o) {
-        Double summa = 0.0;
-        for (Vehicle value : hashMap.values()) {
-            summa += value.getEnginePower();
-        }
-        return new CommandResult("Сумма значений поля EnginePower для всех элементов коллеции = " + summa, true);
-    }
 
     @Override
     public String getDescr() {

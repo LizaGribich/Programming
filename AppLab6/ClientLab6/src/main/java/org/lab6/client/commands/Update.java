@@ -24,20 +24,4 @@ public class Update implements Comandable {
                 "Синтаксис: update {id}";
     }
 
-    @Override
-    public CommandResult execute(Object... o) {
-        int id = Integer.parseInt(o[0].toString());
-        CommandResult commandResult;
-        if (hashMap.get(id) != null) {
-            CreationModel creationModel = new CreationModel();
-            hashMap.put(id, creationModel.createModel(id));
-
-            commandResult = new CommandResult("Модель с id = " + id +
-                    " успешно заменена!", true);
-        } else {
-            commandResult = new CommandResult("Модель с id = " + id +
-                    " не существует!", false);
-        }
-        return commandResult;
-    }
 }

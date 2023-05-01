@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
 
-public class Update implements Comandable {
+public class Update implements Comandable, IntArgument, ExtraModel {
     static String name = "update";
     private MapWrapper<Integer, Vehicle> hashMap;
 
@@ -33,7 +33,6 @@ public class Update implements Comandable {
 
     @Override
     public CommandResult execute(Object... o) {
-        ConsolePrinter consolePrinter = new ConsolePrinter();
 
         String inputString = Arrays.toString(o);
         String[] inputValues = inputString.substring(1, inputString.length() - 1).split(" ");

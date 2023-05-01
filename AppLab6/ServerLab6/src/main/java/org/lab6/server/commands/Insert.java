@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class Insert implements Comandable {
+public class Insert implements Comandable, ExtraModel {
     static String name = "insert";
     private MapWrapper<Integer, Vehicle> hashMap;
     public Insert (MapWrapper<Integer, Vehicle> hashMap) {
@@ -19,7 +19,6 @@ public class Insert implements Comandable {
 
     @Override
     public CommandResult execute(Object... o) {
-        ConsolePrinter consolePrinter = new ConsolePrinter();
 
         RandomNum randomNum = new RandomNum();
         int id = randomNum.createRandomNum(hashMap);

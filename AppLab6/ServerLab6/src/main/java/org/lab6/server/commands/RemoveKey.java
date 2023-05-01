@@ -5,7 +5,7 @@ import org.lab6.server.models.Vehicle;
 
 import java.util.Arrays;
 
-public class RemoveKey implements Comandable {
+public class RemoveKey implements Comandable, IntArgument {
 
     static String name = "remove_key";
     private MapWrapper<Integer, Vehicle> hashMap;
