@@ -37,7 +37,6 @@ public class Entry {
                 byte[] hashBytes = digest.digest(passwordBytes);
 
                 String hashedPassword = Hex.encodeHexString(hashBytes);
-                System.out.println(passTemp);
                 if (hashedPassword.equals(users.get(nameTemp))) {
                     name = nameTemp;
                     pass = passTemp;
@@ -55,10 +54,17 @@ public class Entry {
                 if (users.containsKey(nameTemp)) {
                     consolePrinter.printToConsole("Пользователь с таким именем уже существует.");
                 } else {
+
                     name = nameTemp;
                     pass = passTemp;
-                    users.put(name, pass);
-                    Database.insertBase(name,pass);
+                    MessageDigest digest = MessageDigest.getInstance("SHA-384");
+                    byte[] passwordBytes = passTemp.getBytes(StandardCharsets.UTF_8);
+
+                    byte[] hashBytes = digest.digest(passwordBytes);
+
+                    String hashedPassword = Hex.encodeHexString(hashBytes);
+                    users.put(name, hashedPassword);
+                    Database.insertBase(name,hashedPassword);
                     consolePrinter.printToConsole("Вы успешно зарегистрировались .");
                     break;
                 }

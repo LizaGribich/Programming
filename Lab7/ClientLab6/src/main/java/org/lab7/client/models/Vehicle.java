@@ -36,10 +36,10 @@ public class Vehicle implements Comparable<Vehicle>{
         return id;
     }
 
-    public Double getEnginePower() {
+    public  Double getEnginePower() {
         return enginePower;
     }
-    public void setEnginePower(Double enginePower) {
+    public  void setEnginePower(Double enginePower) {
         this.enginePower = enginePower;
     }
     public float getCapacity() {

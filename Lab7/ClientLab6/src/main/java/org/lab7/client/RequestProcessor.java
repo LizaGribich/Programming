@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.lab7.client.models.Vehicle;
 
 import java.io.IOException;
 import java.net.*;
@@ -51,7 +52,6 @@ public class RequestProcessor {
         ObjectMapper objectMapper = new ObjectMapper();
         ConsolePrinter consolePrinter = new ConsolePrinter();
         Thread thread = new Thread(() -> {
-
             String inputString;
             try {
                 inputString = objectMapper.writeValueAsString(request);

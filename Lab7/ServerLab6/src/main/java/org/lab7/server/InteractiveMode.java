@@ -15,11 +15,13 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.util.*;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 
 public class InteractiveMode {
     static boolean mode = true;
     static Deque<String> deque = new ArrayDeque<>();
-
+    static Multimap<String, String> history = ArrayListMultimap.create();
 
     static DatagramSocket serverSocket;
 
@@ -50,8 +52,8 @@ public class InteractiveMode {
     public static void InteractiveModeOff() {
     }
 
-    public static Deque<String> getDeque() {
-        return deque;
+    public static Multimap<String, String>  getDeque() {
+        return history;
     }
 
     public static void runCommand(HashMap<String, Comandable> commands, MapWrapper<Integer, Vehicle> models) throws Exception {
@@ -93,13 +95,19 @@ public class InteractiveMode {
                 requestProcessor.processRequest(commands.get(request.getCommand()), request, IPAddress, port);
             }
 
-
-            if (deque.size() > 12) {
-                deque.pollFirst();
-                deque.add(request.getCommand());
+            if (history.get(request.getUser().getName()).size() > 11) {
+                for (String key : history.keySet()) {
+                    List<String> values = new ArrayList<>(history.get(key));
+                    if (!values.isEmpty()) {
+                        values.remove(0);
+                        history.replaceValues(key, values);
+                    }
+                }
+                history.put(request.getUser().getName(), request.getCommand());
             } else {
-                deque.add(request.getCommand());
+                history.put(request.getUser().getName(), request.getCommand());
             }
+
     }
 
     public static void runScript(HashMap<String, Comandable> commands, MapWrapper<Integer, Vehicle> models, String[] arrayOfInput) throws IOException {
