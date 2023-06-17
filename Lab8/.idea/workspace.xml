@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9a01b3b7-2091-46df-8d59-0d4f7cbaeaa5" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2PNtFa0nUGiR8nlTxIf9ewxLj0g" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/liza6/IdeaProjects/untitled2&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
+  }
+}</component>
+  <component name="RunManager" selected="Application.org.lab7.client.Main">
+    <configuration name="CoordinatePlane" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="CoordinatePlane" />
+      <module name="ClientLab6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.lab6.server.Main" />
+      <module name="ServerLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.lab6.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.lab6.client.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.lab6.client.Main" />
+      <module name="ClientLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.lab6.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.lab7.client.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.lab7.client.Main" />
+      <module name="ClientLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.lab7.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.lab7.server.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.lab7.server.Main" />
+      <module name="ServerLab6" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.lab7.server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ServerLab6" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ServerLab6" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.org.lab7.client.Main" />
+        <item itemvalue="Application.org.lab7.server.Main" />
+        <item itemvalue="Application.CoordinatePlane" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.org.lab6.client.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9a01b3b7-2091-46df-8d59-0d4f7cbaeaa5" name="Changes" comment="" />
+      <created>1683309266006</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683309266006</updated>
+      <workItem from="1683309266999" duration="4591000" />
+      <workItem from="1683369544327" duration="5045000" />
+      <workItem from="1683377527121" duration="44000" />
+      <workItem from="1683405904973" duration="20000" />
+      <workItem from="1684520974307" duration="102000" />
+      <workItem from="1684522212981" duration="15443000" />
+      <workItem from="1684556493433" duration="18420000" />
+      <workItem from="1684579756937" duration="306000" />
+      <workItem from="1685040782833" duration="27000" />
+      <workItem from="1685643752144" duration="13511000" />
+      <workItem from="1685711779860" duration="158000" />
+      <workItem from="1685777563945" duration="12000" />
+      <workItem from="1686079667576" duration="623000" />
+      <workItem from="1686081141251" duration="18000" />
+      <workItem from="1686222759010" duration="14032000" />
+      <workItem from="1686416836454" duration="9090000" />
+      <workItem from="1686483052368" duration="11633000" />
+      <workItem from="1686639836459" duration="28000" />
+      <workItem from="1686842842538" duration="3823000" />
+      <workItem from="1686851708588" duration="5080000" />
+      <workItem from="1686923042098" duration="9036000" />
+      <workItem from="1687010432177" duration="8920000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
